@@ -1,6 +1,38 @@
 {
-  "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+  "loginPage": {
+    "title": "Log In",
+    "description": "Enter your details to log in"
+  },
+  "signupPage": {
+    "title": "Create Your Account",
+    "description": "Enter your details to create your account"
+  },
+  "loginForm": {
+    "emailLabel": "Email",
+    "emailPlaceholder": "example@mail.com",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "••••••••",
+    "buttonLabel": "Log In",
+    "buttonLabelPending": "Logging In...",
+    "footerText": "Don't have an account yet?",
+    "footerLinkText": "Sign Up"
+  },
+  "signupForm": {
+    "emailLabel": "Email",
+    "emailPlaceholder": "example@mail.com",
+    "firstNameLabel": "First Name",
+    "firstNamePlaceholder": "John",
+    "lastNameLabel": "Last Name",
+    "lastNamePlaceholder": "Doe",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "••••••••",
+    "confirmPasswordLabel": "Confirm Password",
+    "confirmPasswordPlaceholder": "••••••••",
+    "buttonLabel": "Sign Up",
+    "buttonLabelPending": "Signing Up...",
+    "footerText": "Already have an account?",
+    "footerLinkText": "Log In",
+    "successLabel": "Success!",
+    "successText": "We have sent you an email containing a link to confirm your signup."
   }
 }

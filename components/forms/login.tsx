@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useActionState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -9,24 +8,28 @@ import FormField from "@/components/forms/form-field";
 import { login } from "@/lib/auth";
 
 import { Loader2 } from "lucide-react";
+import { Link } from "@/lib/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 export default function LoginForm() {
   const [state, formAction, isPending] = useActionState(login, null);
+
+  const t = useTranslations("loginForm");
 
   return (
     <form action={formAction} className="flex flex-col gap-6">
       <FormField
         name="email"
-        label="Email"
-        placeholder="you@example.com"
+        label={t("emailLabel")}
+        placeholder={t("emailPlaceholder")}
         values={state?.values}
         errors={state?.errors}
       />
 
       <FormField
         name="password"
-        label="Password"
-        placeholder="••••••••"
+        label={t("passwordLabel")}
+        placeholder={t("passwordPlaceholder")}
         type="password"
         values={state?.values}
         errors={state?.errors}
@@ -40,17 +43,17 @@ export default function LoginForm() {
         {isPending ? (
           <>
             <Loader2 className="animate-spin" />
-            Logging in
+            {t("buttonLabelPending")}
           </>
         ) : (
-          "Log in"
+          t("buttonLabel")
         )}
       </Button>
 
       <p className="text-muted-foreground text-center text-sm">
-        Don&apos;t have an account yet?{" "}
+        {t("footerText")}{" "}
         <Link href="/auth/signup" className="underline underline-offset-4">
-          Sign Up
+          {t("footerLinkText")}
         </Link>
       </p>
     </form>

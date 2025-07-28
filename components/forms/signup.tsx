@@ -7,16 +7,19 @@ import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useActionState } from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { useTranslations } from "next-intl";
 
 export default function SignupForm() {
   const [state, formAction, isPending] = useActionState(signup, null);
+
+  const t = useTranslations("signupForm");
 
   return (
     <form action={formAction} className="flex flex-col gap-6">
       <FormField
         name="email"
-        label="Email"
-        placeholder="you@example.com"
+        label={t("emailLabel")}
+        placeholder={t("emailPlaceholder")}
         values={state?.values}
         errors={state?.errors}
       />
@@ -24,16 +27,16 @@ export default function SignupForm() {
       <div className="flex gap-2">
         <FormField
           name="first_name"
-          label="First name"
-          placeholder="John"
+          label={t("firstNameLabel")}
+          placeholder={t("firstNamePlaceholder")}
           values={state?.values}
           errors={state?.errors}
         />
 
         <FormField
           name="last_name"
-          label="Last name"
-          placeholder="Doe"
+          label={t("lastNameLabel")}
+          placeholder={t("lastNamePlaceholder")}
           values={state?.values}
           errors={state?.errors}
         />
@@ -41,8 +44,8 @@ export default function SignupForm() {
 
       <FormField
         name="password"
-        label="Password"
-        placeholder="••••••••"
+        label={t("passwordLabel")}
+        placeholder={t("passwordPlaceholder")}
         type="password"
         values={state?.values}
         errors={state?.errors}
@@ -50,8 +53,8 @@ export default function SignupForm() {
 
       <FormField
         name="confirm_password"
-        label="Confirm Password"
-        placeholder="••••••••"
+        label={t("confirmPasswordLabel")}
+        placeholder={t("confirmPasswordPlaceholder")}
         type="password"
         values={state?.values}
         errors={state?.errors}
@@ -61,26 +64,24 @@ export default function SignupForm() {
         {isPending ? (
           <>
             <Loader2 className="animate-spin" />
-            Signing Up
+            {t("buttonLabelPending")}
           </>
         ) : (
-          "Sign Up"
+          t("buttonLabel")
         )}
       </Button>
 
       {state?.success && (
         <Alert className="text-green-600">
-          <AlertTitle>Success!</AlertTitle>
-          <AlertDescription>
-            We have sent you an email containing a link to confirm your signup.
-          </AlertDescription>
+          <AlertTitle>{t("successLabel")}</AlertTitle>
+          <AlertDescription>{t("successText")}</AlertDescription>
         </Alert>
       )}
 
       <p className="text-muted-foreground text-center text-sm">
-        Already have an account?{" "}
+        {t("footerText")}{" "}
         <Link href="/auth/login" className="underline underline-offset-4">
-          Log In
+          {t("footerLinkText")}
         </Link>
       </p>
     </form>
