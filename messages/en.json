@@ -1,4 +1,8 @@
 {
+  "homePage": {
+    "title": "Log In",
+    "description": "Enter your details to log in"
+  },
   "loginPage": {
     "title": "Log In",
     "description": "Enter your details to log in"
@@ -34,5 +38,9 @@
     "footerLinkText": "Log In",
     "successLabel": "Success!",
     "successText": "We have sent you an email containing a link to confirm your signup."
+  },
+  "languages": {
+    "en": "English",
+    "nl": "Dutch"
   }
 }

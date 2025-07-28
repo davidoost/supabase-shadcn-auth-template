@@ -1,6 +1,46 @@
 {
-  "HomePage": {
-    "title": "Hoi world!",
-    "about": "Go to the about page"
+  "homePage": {
+    "title": "Inloggen",
+    "description": "Voer je gegevens in om in te loggen"
+  },
+  "loginPage": {
+    "title": "Inloggen",
+    "description": "Voer je gegevens in om in te loggen"
+  },
+  "signupPage": {
+    "title": "Account aanmaken",
+    "description": "Voer je gegevens in om een account aan te maken"
+  },
+  "loginForm": {
+    "emailLabel": "E-mailadres",
+    "emailPlaceholder": "voorbeeld@mail.com",
+    "passwordLabel": "Wachtwoord",
+    "passwordPlaceholder": "••••••••",
+    "buttonLabel": "Inloggen",
+    "buttonLabelPending": "Bezig met inloggen...",
+    "footerText": "Heb je nog geen account?",
+    "footerLinkText": "Account aanmaken"
+  },
+  "signupForm": {
+    "emailLabel": "E-mailadres",
+    "emailPlaceholder": "voorbeeld@mail.com",
+    "firstNameLabel": "Voornaam",
+    "firstNamePlaceholder": "Jan",
+    "lastNameLabel": "Achternaam",
+    "lastNamePlaceholder": "Jansen",
+    "passwordLabel": "Wachtwoord",
+    "passwordPlaceholder": "••••••••",
+    "confirmPasswordLabel": "Bevestig wachtwoord",
+    "confirmPasswordPlaceholder": "••••••••",
+    "buttonLabel": "Account aanmaken",
+    "buttonLabelPending": "Bezig met aanmaken...",
+    "footerText": "Heb je al een account?",
+    "footerLinkText": "Inloggen",
+    "successLabel": "Gelukt!",
+    "successText": "We hebben je een e-mail gestuurd met een link om je aanmelding te bevestigen."
+  },
+  "languages": {
+    "en": "Engels",
+    "nl": "Nederlands"
   }
 }
