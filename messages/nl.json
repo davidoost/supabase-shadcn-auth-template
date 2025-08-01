@@ -1,15 +1,23 @@
 {
   "homePage": {
     "title": "Inloggen",
-    "description": "Voer je gegevens in om in te loggen"
+    "description": "Vul je gegevens in om in te loggen"
   },
   "loginPage": {
     "title": "Inloggen",
-    "description": "Voer je gegevens in om in te loggen"
+    "description": "Vul je gegevens in om in te loggen"
   },
   "signupPage": {
-    "title": "Account aanmaken",
-    "description": "Voer je gegevens in om een account aan te maken"
+    "title": "Maak een account aan",
+    "description": "Vul je gegevens in om een account aan te maken"
+  },
+  "forgotPasswordPage": {
+    "title": "Wachtwoord opnieuw instellen aanvragen",
+    "description": "Vul je e-mailadres in om je wachtwoord opnieuw in te stellen"
+  },
+  "resetPasswordPage": {
+    "title": "Wachtwoord opnieuw instellen",
+    "description": "Voer je nieuwe wachtwoord in om verder te gaan"
   },
   "loginForm": {
     "emailLabel": "E-mailadres",
@@ -19,7 +27,8 @@
     "buttonLabel": "Inloggen",
     "buttonLabelPending": "Bezig met inloggen...",
     "footerText": "Heb je nog geen account?",
-    "footerLinkText": "Account aanmaken"
+    "footerLinkText": "Account aanmaken",
+    "forgotPasswordText": "Wachtwoord vergeten?"
   },
   "signupForm": {
     "emailLabel": "E-mailadres",
@@ -33,11 +42,27 @@
     "confirmPasswordLabel": "Bevestig wachtwoord",
     "confirmPasswordPlaceholder": "••••••••",
     "buttonLabel": "Account aanmaken",
-    "buttonLabelPending": "Bezig met aanmaken...",
+    "buttonLabelPending": "Account wordt aangemaakt...",
     "footerText": "Heb je al een account?",
     "footerLinkText": "Inloggen",
     "successLabel": "Gelukt!",
-    "successText": "We hebben je een e-mail gestuurd met een link om je aanmelding te bevestigen."
+    "successText": "We hebben je een e-mail gestuurd met een link om je registratie te bevestigen."
+  },
+  "forgotPasswordForm": {
+    "emailLabel": "E-mailadres",
+    "emailPlaceholder": "voorbeeld@mail.com",
+    "buttonLabel": "Resetlink aanvragen",
+    "buttonLabelPending": "Bezig met aanvragen...",
+    "successLabel": "Gelukt!",
+    "successText": "Als je e-mailadres bij ons bekend is, ontvang je een e-mail met een link om je wachtwoord opnieuw in te stellen."
+  },
+  "resetPasswordForm": {
+    "passwordLabel": "Nieuw wachtwoord",
+    "passwordPlaceholder": "••••••••",
+    "confirmPasswordLabel": "Bevestig wachtwoord",
+    "confirmPasswordPlaceholder": "••••••••",
+    "buttonLabel": "Wachtwoord opnieuw instellen",
+    "buttonLabelPending": "Bezig met resetten..."
   },
   "languages": {
     "en": "Engels",

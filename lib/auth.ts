@@ -5,15 +5,20 @@ import {
   loginSchema,
   SignupData,
   LoginData,
+  ForgotPasswordData,
+  forgotPasswordSchema,
+  ResetPasswordData,
+  resetPasswordSchema,
 } from "@/schemas/auth";
 import { createClient } from "@/lib/supabase/server";
-import { FormActionResult, Result, UserProfile } from "@/lib/types";
+import { AsyncFormResult, FormResult, Result, UserProfile } from "@/lib/types";
 import { redirect } from "next/navigation";
+import z from "zod";
 
 export async function signup(
   prevState: any,
   formData: FormData
-): Promise<FormActionResult<SignupData>> {
+): Promise<FormResult<SignupData>> {
   const rawData = {
     email: formData.get("email") as string,
     first_name: formData.get("first_name") as string,
@@ -27,8 +32,8 @@ export async function signup(
   if (!parsed.success) {
     return {
       success: false,
-      errors: parsed.error.flatten().fieldErrors,
-      values: rawData,
+      errors: z.treeifyError(parsed.error).properties,
+      fieldValues: rawData,
     };
   }
 
@@ -50,20 +55,20 @@ export async function signup(
 
     return {
       success: false,
-      values: rawData,
+      fieldValues: rawData,
     };
   }
 
   return {
     success: true,
-    values: rawData,
+    fieldValues: rawData,
   };
 }
 
 export async function login(
   prevState: any,
   formData: FormData
-): Promise<FormActionResult<LoginData>> {
+): Promise<FormResult<LoginData>> {
   const rawData = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
@@ -74,8 +79,8 @@ export async function login(
   if (!parsed.success) {
     return {
       success: false,
-      errors: parsed.error.flatten().fieldErrors,
-      values: rawData,
+      errors: z.treeifyError(parsed.error).properties,
+      fieldValues: rawData,
     };
   }
 
@@ -91,15 +96,15 @@ export async function login(
 
     return {
       success: false,
-      values: rawData,
-      message: error.message,
+      fieldValues: rawData,
+      error: error.message,
     };
   }
 
   redirect("/dashboard");
 }
 
-export async function logout(): Promise<FormActionResult> {
+export async function logout(): Promise<FormResult> {
   const supabase = await createClient();
 
   const { error } = await supabase.auth.signOut();
@@ -109,7 +114,7 @@ export async function logout(): Promise<FormActionResult> {
 
     return {
       success: false,
-      message: error.message,
+      error: error.message,
     };
   }
 
@@ -139,4 +144,68 @@ export async function getCurrentUser(): Promise<Result<UserProfile>> {
   }
 
   return { success: true, data: data };
+}
+
+export async function requestPasswordReset(
+  prevState: any,
+  formData: FormData
+): AsyncFormResult<ForgotPasswordData> {
+  const rawData = {
+    email: formData.get("email") as string,
+    redirect: formData.get("redirect") as string,
+  };
+
+  const parsed = forgotPasswordSchema.safeParse(rawData);
+
+  if (!parsed.success) {
+    return {
+      success: false,
+      errors: z.treeifyError(parsed.error).properties,
+      fieldValues: rawData,
+    };
+  }
+
+  const supabase = await createClient();
+
+  const { error } = await supabase.auth.resetPasswordForEmail(rawData.email);
+
+  if (error) {
+    console.error(error);
+    return { success: false, fieldValues: rawData, error: "some error" };
+  }
+
+  return { success: true, fieldValues: rawData };
+}
+
+export async function resetPassword(
+  prevState: any,
+  formData: FormData
+): AsyncFormResult<ResetPasswordData> {
+  const rawData = {
+    password: formData.get("password") as string,
+    confirm_password: formData.get("confirm_password") as string,
+  };
+
+  const parsed = resetPasswordSchema.safeParse(rawData);
+
+  if (!parsed.success) {
+    return {
+      success: false,
+      errors: z.treeifyError(parsed.error).properties,
+      fieldValues: rawData,
+    };
+  }
+
+  const supabase = await createClient();
+
+  const { error } = await supabase.auth.updateUser({
+    password: rawData.password,
+  });
+
+  if (error) {
+    console.error(error);
+    return { success: false, fieldValues: rawData, error: "some error" };
+  }
+
+  return { success: true, fieldValues: rawData };
 }

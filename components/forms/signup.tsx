@@ -10,17 +10,17 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useTranslations } from "next-intl";
 
 export default function SignupForm() {
-  const [state, formAction, isPending] = useActionState(signup, null);
+  const [state, action, isLoading] = useActionState(signup, null);
 
   const t = useTranslations("signupForm");
 
   return (
-    <form action={formAction} className="flex flex-col gap-6">
+    <form action={action} className="flex flex-col gap-6">
       <FormField
         name="email"
         label={t("emailLabel")}
         placeholder={t("emailPlaceholder")}
-        values={state?.values}
+        values={state?.fieldValues}
         errors={state?.errors}
       />
 
@@ -29,7 +29,7 @@ export default function SignupForm() {
           name="first_name"
           label={t("firstNameLabel")}
           placeholder={t("firstNamePlaceholder")}
-          values={state?.values}
+          values={state?.fieldValues}
           errors={state?.errors}
         />
 
@@ -37,7 +37,7 @@ export default function SignupForm() {
           name="last_name"
           label={t("lastNameLabel")}
           placeholder={t("lastNamePlaceholder")}
-          values={state?.values}
+          values={state?.fieldValues}
           errors={state?.errors}
         />
       </div>
@@ -47,7 +47,7 @@ export default function SignupForm() {
         label={t("passwordLabel")}
         placeholder={t("passwordPlaceholder")}
         type="password"
-        values={state?.values}
+        values={state?.fieldValues}
         errors={state?.errors}
       />
 
@@ -56,12 +56,12 @@ export default function SignupForm() {
         label={t("confirmPasswordLabel")}
         placeholder={t("confirmPasswordPlaceholder")}
         type="password"
-        values={state?.values}
+        values={state?.fieldValues}
         errors={state?.errors}
       />
 
-      <Button type="submit" disabled={isPending}>
-        {isPending ? (
+      <Button type="submit" disabled={isLoading}>
+        {isLoading ? (
           <>
             <Loader2 className="animate-spin" />
             {t("buttonLabelPending")}

@@ -2,6 +2,9 @@
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Link } from "@/lib/i18n/navigation";
+import { FormFieldError } from "@/lib/types";
+import { useTranslations } from "next-intl";
 import { HTMLInputTypeAttribute } from "react";
 
 type FormFieldProps = {
@@ -10,7 +13,8 @@ type FormFieldProps = {
   placeholder?: string;
   type?: HTMLInputTypeAttribute;
   values?: Record<string, string>;
-  errors?: Record<string, string[]>;
+  errors?: Record<string, FormFieldError>;
+  forgotPassword?: boolean;
 };
 
 export default function FormField({
@@ -20,13 +24,25 @@ export default function FormField({
   type = "text",
   values = {},
   errors = {},
+  forgotPassword = false,
 }: FormFieldProps) {
   const defaultValue = values[name] ?? "";
-  const error = errors[name]?.[0];
+  const error = errors[name]?.errors[0];
+  const t = useTranslations("loginForm");
 
   return (
     <div className="flex flex-col gap-1">
-      <Label htmlFor={name}>{label}</Label>
+      <div className="w-full flex justify-between">
+        <Label htmlFor={name}>{label}</Label>
+        {forgotPassword && (
+          <Link
+            href={"/auth/forgot-password"}
+            className="text-sm text-muted-foreground"
+          >
+            {t("forgotPasswordText")}
+          </Link>
+        )}
+      </div>
 
       <Input
         name={name}

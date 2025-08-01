@@ -1,6 +1,6 @@
 "use client";
 
-import { Locale, useTranslations } from "next-intl";
+import { Locale, useLocale, useTranslations } from "next-intl";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,22 +11,23 @@ import { Button } from "@/components/ui/button";
 import { ComponentType } from "react";
 import { usePathname, useRouter } from "@/lib/i18n/navigation";
 import { routing } from "@/lib/i18n/routing";
-import { NL, US } from "country-flag-icons/react/3x2";
+import { NL, US } from "country-flag-icons/react/1x1";
 
 const localeToFlag: Record<Locale, ComponentType<{ className?: string }>> = {
   nl: NL,
   en: US,
 };
 
-export default function LocaleSwitcher({ locale }: { locale: Locale }) {
+export default function LocaleSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
+  const locale = useLocale();
   const FlagIcon = localeToFlag[locale];
   const t = useTranslations("languages");
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button size={"icon"} variant={"secondary"}>
+        <Button size={"icon"} variant={"outline"} className="size-8">
           <FlagIcon className="rounded-xs size-4" />
         </Button>
       </DropdownMenuTrigger>

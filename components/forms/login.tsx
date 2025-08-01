@@ -12,17 +12,17 @@ import { Link } from "@/lib/i18n/navigation";
 import { useTranslations } from "next-intl";
 
 export default function LoginForm() {
-  const [state, formAction, isPending] = useActionState(login, null);
+  const [state, action, isLoading] = useActionState(login, null);
 
   const t = useTranslations("loginForm");
 
   return (
-    <form action={formAction} className="flex flex-col gap-6">
+    <form action={action} className="flex flex-col gap-6">
       <FormField
         name="email"
         label={t("emailLabel")}
         placeholder={t("emailPlaceholder")}
-        values={state?.values}
+        values={state?.fieldValues}
         errors={state?.errors}
       />
 
@@ -31,16 +31,17 @@ export default function LoginForm() {
         label={t("passwordLabel")}
         placeholder={t("passwordPlaceholder")}
         type="password"
-        values={state?.values}
+        values={state?.fieldValues}
         errors={state?.errors}
+        forgotPassword
       />
 
-      {!state?.success && state?.message && (
-        <p className="text-sm text-destructive">{state?.message}</p>
+      {state?.error && (
+        <p className="text-sm text-destructive">{state?.error}</p>
       )}
 
-      <Button type="submit" disabled={isPending}>
-        {isPending ? (
+      <Button type="submit" disabled={isLoading}>
+        {isLoading ? (
           <>
             <Loader2 className="animate-spin" />
             {t("buttonLabelPending")}

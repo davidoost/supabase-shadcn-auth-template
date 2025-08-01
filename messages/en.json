@@ -11,6 +11,14 @@
     "title": "Create Your Account",
     "description": "Enter your details to create your account"
   },
+  "forgotPasswordPage": {
+    "title": "Request Password Reset",
+    "description": "Enter your email to reset your password"
+  },
+  "resetPasswordPage": {
+    "title": "Reset Password",
+    "description": "Enter your new password to proceed"
+  },
   "loginForm": {
     "emailLabel": "Email",
     "emailPlaceholder": "example@mail.com",
@@ -19,7 +27,8 @@
     "buttonLabel": "Log In",
     "buttonLabelPending": "Logging In...",
     "footerText": "Don't have an account yet?",
-    "footerLinkText": "Sign Up"
+    "footerLinkText": "Sign Up",
+    "forgotPasswordText": "Forgot Password?"
   },
   "signupForm": {
     "emailLabel": "Email",
@@ -38,6 +47,27 @@
     "footerLinkText": "Log In",
     "successLabel": "Success!",
     "successText": "We have sent you an email containing a link to confirm your signup."
+  },
+  "forgotPasswordForm": {
+    "emailLabel": "Email",
+    "emailPlaceholder": "example@mail.com",
+    "buttonLabel": "Request Reset Link",
+    "buttonLabelPending": "Requesting...",
+    "successLabel": "Success!",
+    "successText": "If your email is registered with us you will receive an email containing a link to reset your password."
+  },
+  "resetPasswordForm": {
+    "passwordLabel": "New Password",
+    "passwordPlaceholder": "••••••••",
+    "confirmPasswordLabel": "Confirm Password",
+    "confirmPasswordPlaceholder": "••••••••",
+    "buttonLabel": "Reset Password",
+    "buttonLabelPending": "Resetting..."
+  },
+  "errors": {
+    "formErrors": {
+      "emailRequired": "Please provide a valid email"
+    }
   },
   "languages": {
     "en": "English",

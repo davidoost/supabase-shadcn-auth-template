@@ -14,8 +14,10 @@
 TODO
 
 - Pretty landing page
-- Password forget flow
-- Localization
+- Nav bar
+- Password forget flow - proper feedback on submit
+- Localization -> zod schema validations
 - Pretty user page
-- Profile picture with gravatar fallback
+- Update user details form
 - Finish Readme
+- Error messages for signup, login and password reset

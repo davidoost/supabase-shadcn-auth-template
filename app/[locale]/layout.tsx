@@ -4,6 +4,8 @@ import "../globals.css";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/lib/i18n/routing";
+import { ThemeProvider } from "@/components/theme-provider";
+import NavBar from "@/components/layout/nav-bar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,12 +35,20 @@ export default async function RootLayout({
     notFound();
   }
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-muted`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-dvh flex flex-col`}
+        suppressHydrationWarning
       >
         <NextIntlClientProvider locale={locale}>
-          {children}
+          <ThemeProvider
+            attribute="class"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <NavBar />
+            {children}
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>
