@@ -1,7 +1,24 @@
 {
   "homePage": {
-    "title": "Inloggen",
-    "description": "Vul je gegevens in om in te loggen"
+    "title": "Verstuur je Next.js-project sneller",
+    "description": "Een complete Next.js-template met authenticatie, prachtige UI-componenten en internationalisatie. Alles wat je nodig hebt om je SaaS in minuten te bouwen en te lanceren — niet in maanden. Log hierboven in om het uit te proberen!",
+    "cta": "Nu Deployen",
+    "shadcn": {
+      "title": "shadcn/ui Componenten",
+      "description": "Een ongeforceerde basis voor je eigen designsysteem, aangedreven door shadcn/ui."
+    },
+    "supabase": {
+      "title": "Supabase Auth",
+      "description": "Authenticatie en gebruikersbeheer volledig vooraf geconfigureerd met Supabase."
+    },
+    "next-intl": {
+      "title": "next-intl",
+      "description": "Gelokaliseerde routing en volledig configureerbare ondersteuning voor de talen die je nodig hebt."
+    },
+    "next-themes": {
+      "title": "next-themes",
+      "description": "Ingebouwde ondersteuning voor thematisering, volledig uitbreidbaar, met vooraf ingestelde licht- en donkermodus."
+    }
   },
   "loginPage": {
     "title": "Inloggen",
@@ -12,12 +29,12 @@
     "description": "Vul je gegevens in om een account aan te maken"
   },
   "forgotPasswordPage": {
-    "title": "Wachtwoord opnieuw instellen aanvragen",
-    "description": "Vul je e-mailadres in om je wachtwoord opnieuw in te stellen"
+    "title": "Wachtwoord herstellen",
+    "description": "Vul je e-mailadres in om je wachtwoord te herstellen"
   },
   "resetPasswordPage": {
     "title": "Wachtwoord opnieuw instellen",
-    "description": "Voer je nieuwe wachtwoord in om verder te gaan"
+    "description": "Vul je nieuwe wachtwoord in om verder te gaan"
   },
   "loginForm": {
     "emailLabel": "E-mailadres",
@@ -54,15 +71,25 @@
     "buttonLabel": "Resetlink aanvragen",
     "buttonLabelPending": "Bezig met aanvragen...",
     "successLabel": "Gelukt!",
-    "successText": "Als je e-mailadres bij ons bekend is, ontvang je een e-mail met een link om je wachtwoord opnieuw in te stellen."
+    "successText": "Als je e-mailadres bij ons bekend is, ontvang je een e-mail met een link om je wachtwoord te resetten."
   },
   "resetPasswordForm": {
     "passwordLabel": "Nieuw wachtwoord",
     "passwordPlaceholder": "••••••••",
     "confirmPasswordLabel": "Bevestig wachtwoord",
     "confirmPasswordPlaceholder": "••••••••",
-    "buttonLabel": "Wachtwoord opnieuw instellen",
+    "buttonLabel": "Wachtwoord resetten",
     "buttonLabelPending": "Bezig met resetten..."
+  },
+  "errors": {
+    "formErrors": {
+      "emailRequired": "E-mailadres is verplicht",
+      "passwordRequired": "Wachtwoord is verplicht",
+      "firstNameRequired": "Voornaam is verplicht",
+      "lastNameRequired": "Achternaam is verplicht",
+      "passwordMinLength": "Wachtwoord moet minstens 6 tekens bevatten",
+      "passwordsMismatch": "Wachtwoorden komen niet overeen"
+    }
   },
   "languages": {
     "en": "Engels",

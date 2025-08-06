@@ -1,41 +1,70 @@
-import { z } from "zod";
+import { getTranslations } from "next-intl/server";
+import z from "zod";
 
-export const signupSchema = z
-  .object({
-    email: z.email(),
-    first_name: z.string().min(1, "First name is required"),
-    last_name: z.string().min(1, "Last name is required"),
-    password: z.string().min(6, "Password must be at least 6 characters"),
-    confirm_password: z.string(),
-  })
-  .refine((data) => data.password === data.confirm_password, {
-    path: ["confirm_password"],
-    message: "Passwords do not match",
+// This file contains all schemas for validating our auth forms
+// These schemas are all returned from async functions so we can use translated error messages
+// Each schema is followed by an export statement to export the associated type
+
+// Login schema and type
+
+export async function loginSchema() {
+  const t = await getTranslations("errors.formErrors");
+  return z.object({
+    email: z.email({ message: t("emailRequired") }),
+    password: z.string().min(1, t("passwordRequired")),
   });
+}
 
-export type SignupData = z.infer<typeof signupSchema>;
+export type LoginData = z.infer<Awaited<ReturnType<typeof loginSchema>>>;
 
-export const loginSchema = z.object({
-  email: z.email(),
-  password: z.string().min(1, "Password is required"),
-});
+// Signup schema and type
 
-export type LoginData = z.infer<typeof loginSchema>;
+export async function signupSchema() {
+  const t = await getTranslations("errors.formErrors");
+  return z
+    .object({
+      email: z.email({ message: t("emailRequired") }),
+      first_name: z.string().min(1, t("firstNameRequired")),
+      last_name: z.string().min(1, t("lastNameRequired")),
+      password: z.string().min(6, t("passwordMinLength")),
+      confirm_password: z.string(),
+    })
+    .refine((data) => data.password === data.confirm_password, {
+      path: ["confirm_password"],
+      message: t("passwordsMismatch"),
+    });
+}
 
-export const forgotPasswordSchema = z.object({
-  email: z.email(),
-});
+export type SignupData = z.infer<Awaited<ReturnType<typeof signupSchema>>>;
 
-export type ForgotPasswordData = z.infer<typeof forgotPasswordSchema>;
+// ForgotPassword schema and type
 
-export const resetPasswordSchema = z
-  .object({
-    password: z.string().min(6, "Password must be at least 6 characters"),
-    confirm_password: z.string(),
-  })
-  .refine((data) => data.password === data.confirm_password, {
-    path: ["confirm_password"],
-    message: "Passwords do not match",
+export async function forgotPasswordSchema() {
+  const t = await getTranslations("errors.formErrors");
+  return z.object({
+    email: z.email({ message: t("emailRequired") }),
   });
+}
 
-export type ResetPasswordData = z.infer<typeof resetPasswordSchema>;
+export type ForgotPasswordData = z.infer<
+  Awaited<ReturnType<typeof forgotPasswordSchema>>
+>;
+
+// ResetPassword schema and type
+
+export async function resetPasswordSchema() {
+  const t = await getTranslations("errors.formErrors");
+  return z
+    .object({
+      password: z.string().min(6, t("passwordMinLength")),
+      confirm_password: z.string(),
+    })
+    .refine((data) => data.password === data.confirm_password, {
+      path: ["confirm_password"],
+      message: t("passwordsMismatch"),
+    });
+}
+
+export type ResetPasswordData = z.infer<
+  Awaited<ReturnType<typeof resetPasswordSchema>>
+>;

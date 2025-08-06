@@ -13,11 +13,11 @@
 
 TODO
 
-- Pretty landing page
-- Nav bar
 - Password forget flow - proper feedback on submit
 - Localization -> zod schema validations
 - Pretty user page
 - Update user details form
 - Finish Readme
 - Error messages for signup, login and password reset
+- home button on non-homepage
+- comments on all code

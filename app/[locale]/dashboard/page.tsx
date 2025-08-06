@@ -1,3 +1,4 @@
+import LogoutButton from "@/components/forms/logout-button";
 import { getCurrentUser } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
@@ -13,6 +14,7 @@ export default async function DashboardPage() {
   return (
     <div>
       <pre>{JSON.stringify(userProfile, null, 2)}</pre>
+      <LogoutButton />
     </div>
   );
 }

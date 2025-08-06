@@ -3,22 +3,26 @@
 import { Link } from "@/lib/i18n/navigation";
 import { Button } from "../ui/button";
 import LocaleSwitcher from "./locale-switcher";
-import Logo from "./logo";
 import ThemeSwitcher from "./theme-switcher";
 import { getCurrentUser } from "@/lib/auth";
+import { ArrowRight } from "lucide-react";
 
 export default async function NavBar() {
   const userRes = await getCurrentUser();
   return (
-    <div className="bg-background w-full h-16 border-b p-4 flex justify-between items-center">
-      <Logo />
+    <div className="w-full h-16 p-4 flex justify-end items-center">
       <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 text-muted-foreground">
+          <p>try it out</p>
+          <ArrowRight className="size-3" />
+        </div>
+
         {userRes.success ? (
           <Button size={"sm"} variant={"outline"} asChild>
             <Link href="/dashboard">Dashboard</Link>
           </Button>
         ) : (
-          <Button size={"sm"} variant={"ghost"} asChild>
+          <Button size={"sm"} variant={"outline"} asChild>
             <Link href="/auth/login">Log In</Link>
           </Button>
         )}

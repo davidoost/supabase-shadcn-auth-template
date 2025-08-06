@@ -1,17 +1,17 @@
 "use server";
 
-import {
-  signupSchema,
-  loginSchema,
-  SignupData,
-  LoginData,
-  ForgotPasswordData,
-  forgotPasswordSchema,
-  ResetPasswordData,
-  resetPasswordSchema,
-} from "@/schemas/auth";
 import { createClient } from "@/lib/supabase/server";
 import { AsyncFormResult, FormResult, Result, UserProfile } from "@/lib/types";
+import {
+  ForgotPasswordData,
+  forgotPasswordSchema,
+  LoginData,
+  loginSchema,
+  ResetPasswordData,
+  resetPasswordSchema,
+  SignupData,
+  signupSchema,
+} from "@/schemas/auth";
 import { redirect } from "next/navigation";
 import z from "zod";
 
@@ -27,7 +27,8 @@ export async function signup(
     confirm_password: formData.get("confirm_password") as string,
   };
 
-  const parsed = signupSchema.safeParse(rawData);
+  const schema = await signupSchema();
+  const parsed = schema.safeParse(rawData);
 
   if (!parsed.success) {
     return {
@@ -74,7 +75,8 @@ export async function login(
     password: formData.get("password") as string,
   };
 
-  const parsed = loginSchema.safeParse(rawData);
+  const schema = await loginSchema();
+  const parsed = schema.safeParse(rawData);
 
   if (!parsed.success) {
     return {
@@ -155,7 +157,8 @@ export async function requestPasswordReset(
     redirect: formData.get("redirect") as string,
   };
 
-  const parsed = forgotPasswordSchema.safeParse(rawData);
+  const schema = await forgotPasswordSchema();
+  const parsed = schema.safeParse(rawData);
 
   if (!parsed.success) {
     return {
@@ -171,7 +174,7 @@ export async function requestPasswordReset(
 
   if (error) {
     console.error(error);
-    return { success: false, fieldValues: rawData, error: "some error" };
+    return { success: false, fieldValues: rawData, error: error.message };
   }
 
   return { success: true, fieldValues: rawData };
@@ -186,7 +189,8 @@ export async function resetPassword(
     confirm_password: formData.get("confirm_password") as string,
   };
 
-  const parsed = resetPasswordSchema.safeParse(rawData);
+  const schema = await resetPasswordSchema();
+  const parsed = schema.safeParse(rawData);
 
   if (!parsed.success) {
     return {

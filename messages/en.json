@@ -1,7 +1,13 @@
 {
   "homePage": {
-    "title": "Log In",
-    "description": "Enter your details to log in"
+    "title": "Ship your Next project <i>slightly</i> faster",
+    "description": "This is a barebones, unopinionated Next.js project that comes with some useful features pre-installed, so you don't have to bother. This template comes with:",
+    "shadcn": "Shadcn/ui components",
+    "supabase": "Supabase Authentication",
+    "next-intl": "Translations using next-intl",
+    "next-themes": "Theming using next-themes",
+    "cta": "Try it out by creating an account, or;",
+    "buttonText": "Deploy with Vercel"
   },
   "loginPage": {
     "title": "Log In",
@@ -66,7 +72,12 @@
   },
   "errors": {
     "formErrors": {
-      "emailRequired": "Please provide a valid email"
+      "emailRequired": "Email is required",
+      "passwordRequired": "Password is required",
+      "firstNameRequired": "First Name is required",
+      "lastNameRequired": "Last Name is required",
+      "passwordMinLength": "Password must be at least 6 characters",
+      "passwordsMismatch": "Passwords do not match"
     }
   },
   "languages": {
