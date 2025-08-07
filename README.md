@@ -152,3 +152,17 @@ npx shadcn-ui@latest add button
 ```
 
 This project uses a configured tailwind.config.ts and components.json to match the theme.
+
+## 🙌 Credits
+
+This project uses the following open source tools:
+
+- [**Next.js**](https://nextjs.org/) – MIT License
+- [**Supabase**](https://supabase.com/) – Apache 2.0 License
+- [**shadcn/ui**](https://ui.shadcn.dev/) – MIT License
+- [**next-intl**](https://next-intl-docs.vercel.app/) – MIT License
+- [**next-themes**](https://github.com/pacocoursey/next-themes) – MIT License
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
