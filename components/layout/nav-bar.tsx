@@ -9,6 +9,7 @@ import { ArrowRight } from "lucide-react";
 
 export default async function NavBar() {
   const userRes = await getCurrentUser();
+
   return (
     <div className="w-full h-16 p-4 flex justify-end items-center">
       <div className="flex items-center gap-2">
@@ -19,7 +20,7 @@ export default async function NavBar() {
 
         {userRes.success ? (
           <Button size={"sm"} variant={"outline"} asChild>
-            <Link href="/dashboard">Dashboard</Link>
+            <Link href="/profile">Profile</Link>
           </Button>
         ) : (
           <Button size={"sm"} variant={"outline"} asChild>

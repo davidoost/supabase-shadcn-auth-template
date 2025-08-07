@@ -11,12 +11,16 @@ import {
   resetPasswordSchema,
   SignupData,
   signupSchema,
+  UpdateUserData,
+  updateUserSchema,
 } from "@/schemas/auth";
+import { revalidatePath } from "next/cache";
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import z from "zod";
 
 export async function signup(
-  prevState: any,
+  prevState: FormResult<SignupData>,
   formData: FormData
 ): Promise<FormResult<SignupData>> {
   const rawData = {
@@ -40,6 +44,9 @@ export async function signup(
 
   const supabase = await createClient();
 
+  const headersList = await headers();
+  const origin = headersList.get("origin") || "";
+
   const { error } = await supabase.auth.signUp({
     email: parsed.data.email,
     password: parsed.data.password,
@@ -48,6 +55,7 @@ export async function signup(
         first_name: parsed.data.first_name,
         last_name: parsed.data.last_name,
       },
+      emailRedirectTo: origin,
     },
   });
 
@@ -67,7 +75,7 @@ export async function signup(
 }
 
 export async function login(
-  prevState: any,
+  prevState: FormResult<LoginData>,
   formData: FormData
 ): Promise<FormResult<LoginData>> {
   const rawData = {
@@ -103,7 +111,7 @@ export async function login(
     };
   }
 
-  redirect("/dashboard");
+  redirect("/profile");
 }
 
 export async function logout(): Promise<FormResult> {
@@ -135,9 +143,9 @@ export async function getCurrentUser(): Promise<Result<UserProfile>> {
   }
 
   const { data, error } = await supabase
-    .from("x_user_profiles")
+    .from("user_profiles")
     .select("*")
-    .eq("user_id", user.id)
+    .eq("id", user.id)
     .single();
 
   if (error) {
@@ -149,7 +157,7 @@ export async function getCurrentUser(): Promise<Result<UserProfile>> {
 }
 
 export async function requestPasswordReset(
-  prevState: any,
+  prevState: FormResult<ForgotPasswordData>,
   formData: FormData
 ): AsyncFormResult<ForgotPasswordData> {
   const rawData = {
@@ -170,7 +178,12 @@ export async function requestPasswordReset(
 
   const supabase = await createClient();
 
-  const { error } = await supabase.auth.resetPasswordForEmail(rawData.email);
+  const headersList = await headers();
+  const origin = headersList.get("origin") || "";
+
+  const { error } = await supabase.auth.resetPasswordForEmail(rawData.email, {
+    redirectTo: origin,
+  });
 
   if (error) {
     console.error(error);
@@ -181,7 +194,7 @@ export async function requestPasswordReset(
 }
 
 export async function resetPassword(
-  prevState: any,
+  prevState: FormResult<ResetPasswordData>,
   formData: FormData
 ): AsyncFormResult<ResetPasswordData> {
   const rawData = {
@@ -210,6 +223,57 @@ export async function resetPassword(
     console.error(error);
     return { success: false, fieldValues: rawData, error: "some error" };
   }
+
+  return { success: true, fieldValues: rawData };
+}
+
+export async function updateUser(
+  prevState: FormResult<UpdateUserData>,
+  formData: FormData
+): Promise<FormResult<UpdateUserData>> {
+  const rawData = {
+    email: formData.get("email") as string,
+    first_name: formData.get("first_name") as string,
+    last_name: formData.get("last_name") as string,
+  };
+
+  const userId = formData.get("id") as string;
+
+  const schema = await updateUserSchema();
+  const parsed = schema.safeParse(rawData);
+
+  if (!parsed.success) {
+    return {
+      success: false,
+      errors: z.treeifyError(parsed.error).properties,
+      fieldValues: rawData,
+    };
+  }
+
+  const supabase = await createClient();
+
+  if (rawData.email != prevState?.fieldValues?.email) {
+    const { error } = await supabase.auth.updateUser({ email: rawData.email });
+
+    if (error) {
+      console.error(error);
+      return { success: false, fieldValues: rawData, error: error.message };
+    }
+  }
+
+  const { email, ...rawDataWithoutEmail } = rawData;
+
+  const { error } = await supabase
+    .from("user_profiles")
+    .update(rawDataWithoutEmail)
+    .eq("id", userId);
+
+  if (error) {
+    console.error(error);
+    return { success: false, fieldValues: rawData, error: error.message };
+  }
+
+  revalidatePath("/");
 
   return { success: true, fieldValues: rawData };
 }

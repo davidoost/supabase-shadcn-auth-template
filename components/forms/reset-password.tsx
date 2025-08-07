@@ -8,7 +8,7 @@ import { useActionState } from "react";
 import { useTranslations } from "next-intl";
 
 export default function ResetPasswordForm() {
-  const [state, action, isLoading] = useActionState(resetPassword, null);
+  const [state, action, isLoading] = useActionState(resetPassword, {});
 
   const t = useTranslations("resetPasswordForm");
 

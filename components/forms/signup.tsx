@@ -10,7 +10,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useTranslations } from "next-intl";
 
 export default function SignupForm() {
-  const [state, action, isLoading] = useActionState(signup, null);
+  const [state, action, isLoading] = useActionState(signup, {});
 
   const t = useTranslations("signupForm");
 

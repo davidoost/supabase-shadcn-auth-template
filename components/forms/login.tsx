@@ -12,7 +12,7 @@ import { Link } from "@/lib/i18n/navigation";
 import { useTranslations } from "next-intl";
 
 export default function LoginForm() {
-  const [state, action, isLoading] = useActionState(login, null);
+  const [state, action, isLoading] = useActionState(login, {});
 
   const t = useTranslations("loginForm");
 

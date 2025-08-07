@@ -68,3 +68,18 @@ export async function resetPasswordSchema() {
 export type ResetPasswordData = z.infer<
   Awaited<ReturnType<typeof resetPasswordSchema>>
 >;
+
+// Update User schema and type
+
+export async function updateUserSchema() {
+  const t = await getTranslations("errors.formErrors");
+  return z.object({
+    email: z.email({ message: t("emailRequired") }),
+    first_name: z.string().min(1, t("firstNameRequired")),
+    last_name: z.string().min(1, t("lastNameRequired")),
+  });
+}
+
+export type UpdateUserData = z.infer<
+  Awaited<ReturnType<typeof updateUserSchema>>
+>;

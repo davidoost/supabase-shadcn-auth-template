@@ -14,12 +14,12 @@ export type FormFieldError = {
 };
 
 export type FormResult<T = undefined> = T extends undefined
-  ? { success: boolean; error?: string }
+  ? { success?: boolean; error?: string }
   : {
-      success: boolean;
+      success?: boolean;
       error?: string;
       errors?: Record<string, FormFieldError>;
-      fieldValues: T;
+      fieldValues?: T;
     };
 
 export type AsyncFormResult<T = undefined> = Promise<FormResult<T>>;

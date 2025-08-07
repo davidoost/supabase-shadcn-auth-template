@@ -1,40 +1,38 @@
 {
   "homePage": {
-    "title": "Verstuur je Next.js-project sneller",
-    "description": "Een complete Next.js-template met authenticatie, prachtige UI-componenten en internationalisatie. Alles wat je nodig hebt om je SaaS in minuten te bouwen en te lanceren — niet in maanden. Log hierboven in om het uit te proberen!",
-    "cta": "Nu Deployen",
-    "shadcn": {
-      "title": "shadcn/ui Componenten",
-      "description": "Een ongeforceerde basis voor je eigen designsysteem, aangedreven door shadcn/ui."
-    },
-    "supabase": {
-      "title": "Supabase Auth",
-      "description": "Authenticatie en gebruikersbeheer volledig vooraf geconfigureerd met Supabase."
-    },
-    "next-intl": {
-      "title": "next-intl",
-      "description": "Gelokaliseerde routing en volledig configureerbare ondersteuning voor de talen die je nodig hebt."
-    },
-    "next-themes": {
-      "title": "next-themes",
-      "description": "Ingebouwde ondersteuning voor thematisering, volledig uitbreidbaar, met vooraf ingestelde licht- en donkermodus."
-    }
+    "title": "Bouw je volgende project <i>ietsje</i> sneller",
+    "description": "Dit is een eenvoudig Next.js-projecttemplate dat enkele handige functies vooraf geïnstalleerd heeft, zodat jij dat niet hoeft te doen. Dit template bevat:",
+    "shadcn": "Shadcn/ui-componenten",
+    "supabase": "Supabase-authenticatie",
+    "next-intl": "Vertalingen met next-intl",
+    "next-themes": "Thema's met next-themes",
+    "cta": "Probeer het uit door een account aan te maken, of;",
+    "buttonText": "Deploy met Vercel"
+  },
+  "userPage": {
+    "greeting": "Hallo {name} 👋",
+    "message": "Je bent nu ingelogd. Hieronder vind je je profielgegevens. Je kunt ze bewerken of uitloggen.",
+    "edit": "Bewerken",
+    "logout": "Uitloggen",
+    "loggingOut": "Bezig met uitloggen...",
+    "editProfileTitle": "Profiel bewerken",
+    "editProfileSubtitle": "Bewerk je gegevens om je profiel bij te werken"
   },
   "loginPage": {
     "title": "Inloggen",
     "description": "Vul je gegevens in om in te loggen"
   },
   "signupPage": {
-    "title": "Maak een account aan",
+    "title": "Maak je account aan",
     "description": "Vul je gegevens in om een account aan te maken"
   },
   "forgotPasswordPage": {
-    "title": "Wachtwoord herstellen",
-    "description": "Vul je e-mailadres in om je wachtwoord te herstellen"
+    "title": "Wachtwoord opnieuw instellen",
+    "description": "Vul je e-mailadres in om je wachtwoord te resetten"
   },
   "resetPasswordPage": {
     "title": "Wachtwoord opnieuw instellen",
-    "description": "Vul je nieuwe wachtwoord in om verder te gaan"
+    "description": "Voer je nieuwe wachtwoord in om verder te gaan"
   },
   "loginForm": {
     "emailLabel": "E-mailadres",
@@ -43,7 +41,7 @@
     "passwordPlaceholder": "••••••••",
     "buttonLabel": "Inloggen",
     "buttonLabelPending": "Bezig met inloggen...",
-    "footerText": "Heb je nog geen account?",
+    "footerText": "Nog geen account?",
     "footerLinkText": "Account aanmaken",
     "forgotPasswordText": "Wachtwoord vergeten?"
   },
@@ -59,11 +57,11 @@
     "confirmPasswordLabel": "Bevestig wachtwoord",
     "confirmPasswordPlaceholder": "••••••••",
     "buttonLabel": "Account aanmaken",
-    "buttonLabelPending": "Account wordt aangemaakt...",
+    "buttonLabelPending": "Bezig met aanmelden...",
     "footerText": "Heb je al een account?",
     "footerLinkText": "Inloggen",
     "successLabel": "Gelukt!",
-    "successText": "We hebben je een e-mail gestuurd met een link om je registratie te bevestigen."
+    "successText": "We hebben je een e-mail gestuurd met een link om je aanmelding te bevestigen."
   },
   "forgotPasswordForm": {
     "emailLabel": "E-mailadres",
@@ -81,13 +79,21 @@
     "buttonLabel": "Wachtwoord resetten",
     "buttonLabelPending": "Bezig met resetten..."
   },
+  "updateUserForm": {
+    "emailLabel": "E-mailadres",
+    "firstNameLabel": "Voornaam",
+    "lastNameLabel": "Achternaam",
+    "buttonLabel": "Bijwerken",
+    "buttonLabelPending": "Bezig met bijwerken...",
+    "changePasswordButtonLabel": "Wachtwoord wijzigen"
+  },
   "errors": {
     "formErrors": {
       "emailRequired": "E-mailadres is verplicht",
       "passwordRequired": "Wachtwoord is verplicht",
       "firstNameRequired": "Voornaam is verplicht",
       "lastNameRequired": "Achternaam is verplicht",
-      "passwordMinLength": "Wachtwoord moet minstens 6 tekens bevatten",
+      "passwordMinLength": "Wachtwoord moet minimaal 6 tekens bevatten",
       "passwordsMismatch": "Wachtwoorden komen niet overeen"
     }
   },

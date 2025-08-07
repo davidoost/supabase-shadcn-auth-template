@@ -1,13 +1,22 @@
 {
   "homePage": {
     "title": "Ship your Next project <i>slightly</i> faster",
-    "description": "This is a barebones, unopinionated Next.js project that comes with some useful features pre-installed, so you don't have to bother. This template comes with:",
+    "description": "This is a barebones, unopinionated Next.js project template that comes with some useful features pre-installed, so you don't have to bother. This template comes with:",
     "shadcn": "Shadcn/ui components",
     "supabase": "Supabase Authentication",
     "next-intl": "Translations using next-intl",
     "next-themes": "Theming using next-themes",
     "cta": "Try it out by creating an account, or;",
     "buttonText": "Deploy with Vercel"
+  },
+  "userPage": {
+    "greeting": "Hello {name} 👋",
+    "message": "You are now logged in. You can find your profile data below, edit it, or log out.",
+    "edit": "Edit",
+    "logout": "Log Out",
+    "loggingOut": "Logging Out...",
+    "editProfileTitle": "Edit Profile",
+    "editProfileSubtitle": "Edit your information to update your profile"
   },
   "loginPage": {
     "title": "Log In",
@@ -69,6 +78,14 @@
     "confirmPasswordPlaceholder": "••••••••",
     "buttonLabel": "Reset Password",
     "buttonLabelPending": "Resetting..."
+  },
+  "updateUserForm": {
+    "emailLabel": "Email",
+    "firstNameLabel": "First Name",
+    "lastNameLabel": "Last Name",
+    "buttonLabel": "Update",
+    "buttonLabelPending": "Updating...",
+    "changePasswordButtonLabel": "Change Password"
   },
   "errors": {
     "formErrors": {

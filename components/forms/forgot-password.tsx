@@ -8,10 +8,9 @@ import { useActionState } from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useTranslations } from "next-intl";
 import { Input } from "../ui/input";
-import { usePathname } from "@/lib/i18n/navigation";
 
 export default function ForgotPasswordForm() {
-  const [state, action, isLoading] = useActionState(requestPasswordReset, null);
+  const [state, action, isLoading] = useActionState(requestPasswordReset, {});
 
   const t = useTranslations("forgotPasswordForm");
 
