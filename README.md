@@ -7,15 +7,12 @@ A **batteries-included** Next.js starter template with:
 - 🌍 [next-intl](https://next-intl-docs.vercel.app/) for internationalization
 - 🌓 [next-themes](https://github.com/pacocoursey/next-themes) for dark/light mode
 
----
-
 ## 🚀 Getting Started
 
 ```bash
 npm install
+npm run dev
 ```
-
----
 
 ## 🔑 Supabase Setup
 
@@ -47,7 +44,11 @@ This allows these urls to be used as redirect urls after signup and password res
 
 ### 4. Configure e-mail templates
 
-In Supabase, under **Authentication → Emails**, we need to adjust the **Confirm Signup** and **Reset Password** email templates to point to our confirmation route. For **Confirm Signup**, change `{{ .ConfirmationURL }}` to `{{ .RedirectTo }}/auth/confirm?token_hash={{ .TokenHash }}&type=email&next=/profile`. For **Reset Password**, change `{{ .ConfirmationURL }}` to `{{ .RedirectTo }}/auth/confirm?token_hash={{ .TokenHash }}&type=email&next=/auth/reset-password`.
+In Supabase, under **Authentication → Emails**, we need to adjust the **Confirm Signup** and **Reset Password** email templates to point to our confirmation route.
+
+For **Confirm Signup**, change `{{ .ConfirmationURL }}` to `{{ .RedirectTo }}/auth/confirm?token_hash={{ .TokenHash }}&type=email&next=/profile`.
+
+For **Reset Password**, change `{{ .ConfirmationURL }}` to `{{ .RedirectTo }}/auth/confirm?token_hash={{ .TokenHash }}&type=email&next=/auth/reset-password`.
 
 ### 5. Run Supabase SQL setup
 
@@ -122,3 +123,32 @@ create trigger on_auth_user_updated
   when (old.email is distinct from new.email)
   execute procedure public.sync_user_email();
 ```
+
+## 🌍 Adding a Language (next-intl)
+
+Translation files are stored under `./messages`.
+
+To add a new language:
+
+1. Create a new JSON file in `./messages`, e.g. `fr.json`
+2. Add all necessary translations
+3. Update the locales array in `./lib/i18n/routing.ts`:
+
+- `locales = ["en", "nl", "fr"];`
+
+4. Update `./components/layout/locale-switcher.tsx`
+
+- `import { NL, US, FR } from "country-flag-icons/react/1x1";`
+- add `fr: FR` to the `localeToFlag` function
+
+5. Update all your translation files with a key for your new function.
+
+## 🧱 Components (ShadCN UI)
+
+UI components are powered by shadcn/ui. To scaffold new components:
+
+```bash
+npx shadcn-ui@latest add button
+```
+
+This project uses a configured tailwind.config.ts and components.json to match the theme.
