@@ -1,6 +1,7 @@
 "use server";
 
 import { Button } from "@/components/ui/button";
+import { Link } from "@/lib/i18n/navigation";
 import { Code, Play } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
@@ -26,13 +27,17 @@ export default async function HomePage() {
         </ul>
         <p>{t("cta")}</p>
         <div className="flex gap-2">
-          <Button className="font-mono">
-            <Play />
-            {t("buttonText")}
+          <Button className="font-mono" asChild>
+            <Link href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdavidoost%2Fsupabase-shadcn-auth-template&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY&demo-title=Demo&demo-url=https%3A%2F%2Fsupabase-shadcn-auth-template.vercel.app">
+              <Play />
+              {t("buttonText")}
+            </Link>
           </Button>
-          <Button className="font-mono" variant={"outline"}>
-            <Code />
-            readme.md
+          <Button className="font-mono" variant={"outline"} asChild>
+            <Link href="https://github.com/davidoost/supabase-shadcn-auth-template">
+              <Code />
+              readme.md
+            </Link>
           </Button>
         </div>
       </div>
