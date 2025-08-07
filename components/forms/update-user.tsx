@@ -60,8 +60,8 @@ export default function UpdateUserForm({
       <Button variant={"ghost"} asChild>
         <Link href={"/auth/reset-password"}>
           <KeyRound />
+          {t("changePasswordButtonLabel")}
         </Link>
-        {t("changePasswordButtonLabel")}
       </Button>
     </form>
   );
