@@ -47,16 +47,10 @@ export default function UpdateUserForm({
         errors={state?.errors}
       />
 
-      <Button type="submit" disabled={isLoading} className="col-span-2">
-        {isLoading ? (
-          <>
-            <Loader2 className="animate-spin" />
-            {t("buttonLabelPending")}
-          </>
-        ) : (
-          t("buttonLabel")
-        )}
+      <Button type="submit" isLoading={isLoading}>
+        t("buttonLabel")
       </Button>
+
       <Button variant={"ghost"} asChild>
         <Link href={"/auth/reset-password"}>
           <KeyRound />

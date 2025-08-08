@@ -30,15 +30,8 @@ export default function ForgotPasswordForm() {
         <p className="text-sm text-destructive">{state?.error}</p>
       )}
 
-      <Button type="submit" disabled={isLoading}>
-        {isLoading ? (
-          <>
-            <Loader2 className="animate-spin" />
-            {t("buttonLabelPending")}
-          </>
-        ) : (
-          t("buttonLabel")
-        )}
+      <Button type="submit" isLoading={isLoading}>
+        t("buttonLabel")
       </Button>
 
       {state?.success && (

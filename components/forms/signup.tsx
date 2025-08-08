@@ -60,15 +60,8 @@ export default function SignupForm() {
         errors={state?.errors}
       />
 
-      <Button type="submit" disabled={isLoading}>
-        {isLoading ? (
-          <>
-            <Loader2 className="animate-spin" />
-            {t("buttonLabelPending")}
-          </>
-        ) : (
-          t("buttonLabel")
-        )}
+      <Button type="submit" isLoading={isLoading}>
+        t("buttonLabel")
       </Button>
 
       {state?.success && (

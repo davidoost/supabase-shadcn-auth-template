@@ -13,21 +13,11 @@ export default function LogoutButton() {
     <form action={action}>
       <Button
         type="submit"
+        isLoading={isLoading}
         variant={"outline"}
-        disabled={isLoading}
         className="text-destructive"
       >
-        {isLoading ? (
-          <>
-            <Loader2 className="animate-spin" />
-            {t("loggingOut")}
-          </>
-        ) : (
-          <>
-            <LogOut />
-            {t("logout")}
-          </>
-        )}
+        {t("logout")}
       </Button>
     </form>
   );

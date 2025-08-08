@@ -7,7 +7,6 @@ import FormField from "@/components/forms/form-field";
 
 import { login } from "@/lib/auth";
 
-import { Loader2 } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
 import { useTranslations } from "next-intl";
 
@@ -40,15 +39,8 @@ export default function LoginForm() {
         <p className="text-sm text-destructive">{state?.error}</p>
       )}
 
-      <Button type="submit" disabled={isLoading}>
-        {isLoading ? (
-          <>
-            <Loader2 className="animate-spin" />
-            {t("buttonLabelPending")}
-          </>
-        ) : (
-          t("buttonLabel")
-        )}
+      <Button type="submit" isLoading={isLoading}>
+        {t("buttonLabel")}
       </Button>
 
       <p className="text-muted-foreground text-center text-sm">
