@@ -16,8 +16,9 @@ import {
 } from "@/schemas/auth";
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
-import { redirect } from "next/navigation";
 import z from "zod";
+import { redirect } from "./i18n/navigation";
+import { getLocale } from "next-intl/server";
 
 export async function signup(
   prevState: FormResult<SignupData>,
@@ -111,7 +112,9 @@ export async function login(
     };
   }
 
-  redirect("/profile");
+  const locale = await getLocale();
+
+  redirect({ href: "/profile", locale: locale });
 }
 
 export async function logout(): Promise<FormResult> {
@@ -128,7 +131,9 @@ export async function logout(): Promise<FormResult> {
     };
   }
 
-  redirect("/");
+  const locale = await getLocale();
+
+  redirect({ href: "/", locale: locale });
 }
 
 export async function getCurrentUser(): Promise<Result<UserProfile>> {

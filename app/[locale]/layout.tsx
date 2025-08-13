@@ -35,7 +35,7 @@ export default async function RootLayout({
     notFound();
   }
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-dvh flex flex-col bg-muted`}
         suppressHydrationWarning
