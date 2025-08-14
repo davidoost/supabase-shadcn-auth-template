@@ -3,7 +3,6 @@
 import FormField from "@/components/forms/form-field";
 import { Button } from "@/components/ui/button";
 import { signup } from "@/lib/auth";
-import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useActionState } from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -61,7 +60,7 @@ export default function SignupForm() {
       />
 
       <Button type="submit" isLoading={isLoading}>
-        t("buttonLabel")
+        {t("buttonLabel")}
       </Button>
 
       {state?.success && (

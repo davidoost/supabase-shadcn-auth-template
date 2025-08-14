@@ -3,7 +3,7 @@
 import FormField from "@/components/forms/form-field";
 import { Button } from "@/components/ui/button";
 import { updateUser } from "@/lib/auth";
-import { KeyRound, Loader2, Trash2 } from "lucide-react";
+import { KeyRound } from "lucide-react";
 import { useActionState } from "react";
 import { useTranslations } from "next-intl";
 import { UserProfile } from "@/lib/types";
@@ -48,7 +48,7 @@ export default function UpdateUserForm({
       />
 
       <Button type="submit" isLoading={isLoading}>
-        t("buttonLabel")
+        {t("buttonLabel")}
       </Button>
 
       <Button variant={"ghost"} asChild>

@@ -11,7 +11,7 @@ import { getTranslations } from "next-intl/server";
 
 export default async function NavBar() {
   const t = await getTranslations("navBar");
-  const userRes = use(getCurrentUser());
+  const userRes = await getCurrentUser();
 
   return (
     <div className="w-full h-16 p-4 flex justify-end items-center">

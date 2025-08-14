@@ -3,7 +3,6 @@
 import FormField from "@/components/forms/form-field";
 import { Button } from "@/components/ui/button";
 import { requestPasswordReset } from "@/lib/auth";
-import { Loader2 } from "lucide-react";
 import { useActionState } from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useTranslations } from "next-intl";
@@ -31,7 +30,7 @@ export default function ForgotPasswordForm() {
       )}
 
       <Button type="submit" isLoading={isLoading}>
-        t("buttonLabel")
+        {t("buttonLabel")}
       </Button>
 
       {state?.success && (
