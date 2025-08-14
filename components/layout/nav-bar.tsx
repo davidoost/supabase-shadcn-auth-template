@@ -4,7 +4,7 @@ import { Link } from "@/lib/i18n/navigation";
 import { Button } from "../ui/button";
 import LocaleSwitcher from "./locale-switcher";
 import ThemeSwitcher from "./theme-switcher";
-import { getCurrentUser } from "@/lib/auth";
+import { getCurrentUser } from "@/lib/users";
 import { ArrowRight } from "lucide-react";
 import { use } from "react";
 import { getTranslations } from "next-intl/server";

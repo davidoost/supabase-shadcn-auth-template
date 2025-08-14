@@ -2,7 +2,7 @@
 
 import FormField from "@/components/forms/form-field";
 import { Button } from "@/components/ui/button";
-import { resetPassword } from "@/lib/auth";
+import { resetPassword } from "@/lib/passwords";
 import { useActionState } from "react";
 import { useTranslations } from "next-intl";
 

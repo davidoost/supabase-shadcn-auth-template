@@ -2,7 +2,7 @@
 
 import FormField from "@/components/forms/form-field";
 import { Button } from "@/components/ui/button";
-import { updateUser } from "@/lib/auth";
+import { updateUser } from "@/lib/users";
 import { KeyRound } from "lucide-react";
 import { useActionState } from "react";
 import { useTranslations } from "next-intl";

@@ -2,7 +2,7 @@
 
 import FormField from "@/components/forms/form-field";
 import { Button } from "@/components/ui/button";
-import { requestPasswordReset } from "@/lib/auth";
+import { requestPasswordReset } from "@/lib/passwords";
 import { useActionState } from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useTranslations } from "next-intl";

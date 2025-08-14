@@ -2,7 +2,7 @@ import LogoutButton from "@/components/forms/logout-button";
 import UpdateUserForm from "@/components/forms/update-user";
 import { ResponsiveDrawer } from "@/components/layout/responsive-drawer";
 import { Button } from "@/components/ui/button";
-import { getCurrentUser } from "@/lib/auth";
+import { getCurrentUser } from "@/lib/users";
 import { Pencil } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { redirect } from "next/navigation";
