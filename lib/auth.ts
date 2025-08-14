@@ -1,7 +1,12 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
-import { AsyncFormResult, FormResult, Result, UserProfile } from "@/lib/types";
+import {
+  AsyncFormResult,
+  AsyncResult,
+  FormResult,
+  UserProfile,
+} from "@/lib/types";
 import {
   ForgotPasswordData,
   forgotPasswordSchema,
@@ -23,7 +28,7 @@ import { getLocale } from "next-intl/server";
 export async function signup(
   prevState: FormResult<SignupData>,
   formData: FormData
-): Promise<FormResult<SignupData>> {
+): AsyncFormResult<SignupData> {
   const rawData = {
     email: formData.get("email") as string,
     first_name: formData.get("first_name") as string,
@@ -78,7 +83,7 @@ export async function signup(
 export async function login(
   prevState: FormResult<LoginData>,
   formData: FormData
-): Promise<FormResult<LoginData>> {
+): AsyncFormResult<LoginData> {
   const rawData = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
@@ -117,7 +122,7 @@ export async function login(
   redirect({ href: "/profile", locale: locale });
 }
 
-export async function logout(): Promise<FormResult> {
+export async function logout(): AsyncFormResult {
   const supabase = await createClient();
 
   const { error } = await supabase.auth.signOut();
@@ -136,7 +141,7 @@ export async function logout(): Promise<FormResult> {
   redirect({ href: "/", locale: locale });
 }
 
-export async function getCurrentUser(): Promise<Result<UserProfile>> {
+export async function getCurrentUser(): AsyncResult<UserProfile> {
   const supabase = await createClient();
 
   const {
@@ -235,7 +240,7 @@ export async function resetPassword(
 export async function updateUser(
   prevState: FormResult<UpdateUserData>,
   formData: FormData
-): Promise<FormResult<UpdateUserData>> {
+): AsyncFormResult<UpdateUserData> {
   const rawData = {
     email: formData.get("email") as string,
     first_name: formData.get("first_name") as string,

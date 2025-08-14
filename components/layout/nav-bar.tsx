@@ -6,11 +6,11 @@ import LocaleSwitcher from "./locale-switcher";
 import ThemeSwitcher from "./theme-switcher";
 import { getCurrentUser } from "@/lib/auth";
 import { ArrowRight } from "lucide-react";
-import { useTranslations } from "next-intl";
 import { use } from "react";
+import { getTranslations } from "next-intl/server";
 
-export default function NavBar() {
-  const t = useTranslations("navBar");
+export default async function NavBar() {
+  const t = await getTranslations("navBar");
   const userRes = use(getCurrentUser());
 
   return (
