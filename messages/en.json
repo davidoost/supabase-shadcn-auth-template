@@ -9,6 +9,11 @@
     "cta": "Try it out by creating an account, or;",
     "buttonText": "Deploy with Vercel"
   },
+  "navBar": {
+    "tryItOut": "try it out",
+    "profile": "Profile",
+    "logIn": "Log In"
+  },
   "userPage": {
     "greeting": "Hello {name} 👋",
     "message": "You are now logged in. You can find your profile data below, edit it, or log out.",
