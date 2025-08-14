@@ -6,25 +6,28 @@ import LocaleSwitcher from "./locale-switcher";
 import ThemeSwitcher from "./theme-switcher";
 import { getCurrentUser } from "@/lib/auth";
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { use } from "react";
 
-export default async function NavBar() {
-  const userRes = await getCurrentUser();
+export default function NavBar() {
+  const t = useTranslations("navBar");
+  const userRes = use(getCurrentUser());
 
   return (
     <div className="w-full h-16 p-4 flex justify-end items-center">
       <div className="flex items-center gap-2">
         <div className="flex items-center gap-1 text-muted-foreground">
-          <p>try it out</p>
+          <p>{t("tryItOut")}</p>
           <ArrowRight className="size-3" />
         </div>
 
         {userRes.success ? (
           <Button size={"sm"} variant={"outline"} asChild>
-            <Link href="/profile">Profile</Link>
+            <Link href="/profile">{t("profile")}</Link>
           </Button>
         ) : (
           <Button size={"sm"} variant={"outline"} asChild>
-            <Link href="/auth/login">Log In</Link>
+            <Link href="/auth/login">{t("logIn")}</Link>
           </Button>
         )}
         <LocaleSwitcher />

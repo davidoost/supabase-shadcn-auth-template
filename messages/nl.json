@@ -9,6 +9,11 @@
     "cta": "Probeer het uit door een account aan te maken, of;",
     "buttonText": "Deploy met Vercel"
   },
+  "navBar": {
+    "tryItOut": "Probeer het uit",
+    "profile": "Profiel",
+    "logIn": "Inloggen"
+  },
   "userPage": {
     "greeting": "Hallo {name} 👋",
     "message": "Je bent nu ingelogd. Hieronder vind je je profielgegevens. Je kunt ze bewerken of uitloggen.",
